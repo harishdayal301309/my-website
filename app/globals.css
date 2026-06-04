@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blush: #F4E0DF;
+  --color-sage: #AEC0B2;
+  --color-bg: #FCFBF9;
+  --color-text: #2D302E;
+  --color-text-light: #6A706C;
+  --color-white: #FFFFFF;
+  --color-accent: #D2A8A4;
+  
+  --font-inter: var(--font-inter), sans-serif;
+  --font-outfit: var(--font-outfit), sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-inter);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit);
+    font-weight: 600;
+  }
+}
+
+@layer utilities {
+  .glory-outline {
+    position: relative;
+  }
+  .glory-outline::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0));
+    filter: blur(8px);
+    z-index: -1;
+    animation: pulse-glory 3s ease-in-out infinite;
+  }
+
+  .cosmic-theme {
+    background: radial-gradient(circle at center, #1a1a2e, #0f0f1a);
+    color: #e0e0e0;
+  }
+
+  .rainbow-theme {
+    background: linear-gradient(135deg, #F4E0DF, #fdfd96, #AEC0B2, #aec6cf, #b39eb5);
+    background-size: 300% 300%;
+    animation: gradient-move 8s ease infinite;
+  }
+
+  /* Page transitions and animations */
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .glass-dark {
+    background: rgba(20, 20, 25, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes pulse-glory {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
